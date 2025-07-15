@@ -28,6 +28,7 @@ body {
   color: #fff;
   font-size: 14px;
   font-style: italic;
+  z-index:1000;
 }
 @keyframes marquee {
   0%   { transform: translateX(0); }
@@ -36,11 +37,13 @@ body {
 
 /* 1. HEADER */
 .site-header {
-  background-image: url('assets/header-bg.jpg');
+  background-image: url('/assets/header-bg.jpg');
   background-size: cover;
   background-position: center;
   text-align: center;
   padding: 20px 0;
+  position: relative;
+  z-index: 1000; 
 }
 .site-header #logo {
   height: 50px;
@@ -55,6 +58,7 @@ body {
   background: linear-gradient(#b30000, #e60000);
   padding: 0 20px;
   position: relative;
+  z-index:1000;
 }
 .nav-menu {
   display: flex;
@@ -112,7 +116,46 @@ body {
 .mobile-toggle {
   display: none;
 }
+#toc {
+  position: fixed;
+  top: 20 0px;           /* đẩy toc xuống dưới hết marquee+header+navbar */
+  left: 20px;
+  width: 200px;
+  max-height: calc(100vh - 150px); /* phần còn lại để scroll */
+  overflow-y: auto;
+  background: rgba(255,255,255,0.9);
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 500;         /* thấp hơn navbar, header */
+}
+#content {
+  margin-left: 240px; /* = #toc width + khoảng cách 20px */
+  padding: 20px;    /* thêm padding cho nội dung */
+}
 
+#toc ol li a { color: #333; text-decoration: none; }
+#toc ol li a.active {
+  font-weight: bold;
+  color: #b30000;
+}
+
+/* 2. Ẩn TOC trên mobile, hiện nút toggle */
+#toc-toggle {
+  display: none;            /* chỉ show trên mobile */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: #e60000;
+  color: #fff;
+  font-size: 24px;
+  line-height: 48px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
 @media screen and (max-width: 768px) {
   /* Ẩn menu gốc, hiện mobile-toggle */
   .nav-menu {
@@ -182,5 +225,38 @@ body {
   }
   .nav-menu.mobile-show .dropdown-list a:hover {
     background: rgba(255,255,255,0.1);
+  }
+  #toc { display: none; }
+  #toc-toggle { display: block; }
+
+  /* Khi TOC mở: */
+  #toc.open {
+    display: block;
+    position: fixed;
+    bottom: 80px;          /* đặt ngay trên nút toggle (48px + 12px khoảng cách) */
+    right: 20px;
+    width: 240px;
+    max-height: 300px;     /* bạn có thể điều chỉnh để vừa ý */
+    overflow-y: auto;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 12px;
+    z-index: 1000;         /* dưới toggle một bậc để toggle luôn nổi trên */
+  }
+    /* Style link và active như trên desktop */
+  #toc.open a {
+    display: block;
+    padding: 6px 0;
+    color: #333;
+    text-decoration: none;
+  }
+  #toc.open a.active {
+    font-weight: bold;
+    color: #b30000;
+  }
+  #content {
+    margin-left: 0;
+    padding: 0 10px;
   }
 }

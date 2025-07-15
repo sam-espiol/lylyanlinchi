@@ -1,11 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lịch sử phòng cảnh sát cơ động</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lịch sử phòng cảnh sát cơ động</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="assets/logo.png">
 </head>
 <body>
-    <img src="assets/logo.png" alt="logo" id = "logo" >
+
+  <!-- MARQUEE CỐ ĐỊNH Ở ĐẦU -->
+  <div class="marquee-container marquee-top">
+    <div class="marquee">Vì nước quên thân vì dân quên mình</div>
+  </div>
+
+  <!-- HEADER RIÊNG với background-image -->
+  <header class="site-header">
+    <a href="/"><img id="logo" src="assets/logo.png" alt="Logo Cảnh sát cơ động"></a>
+  </header>
+
+  <!-- NAVBAR CHÍNH -->
+  <nav class="topnav">
+    <!-- Mobile toggle: logo trái + hamburger phải -->
+    <div class="mobile-toggle">
+      <a href="/" class="mobile-home" aria-label="Trang chủ">
+        <img src="assets/logo.png" alt="Logo">
+      </a>
+      <button class="hamburger" aria-label="Mở menu">☰</button>
+    </div>
+
+    <!-- Menu links gốc -->
+    <div class="nav-menu">
+      <a href="/" class="heading">Trang chủ</a>
+      <div class="dropdown">
+        <button type="button" class="dropbtn">Lịch sử ▼</button>
+        <div class="dropdown-list">
+          <a href="components/30nam/30.html">30 năm</a>
+          <a href="components/40nam/40.html">40 năm</a>
+          <a href="components/50nam/50.html">50 năm</a>
+        </div>
+      </div>
+      <a href="#individuals" class="heading">Những cá nhân tiêu biểu</a>
+    </div>
+  </nav>
+
+  <!-- NỘI DUNG KHÁC CỦA BẠN Ở ĐÂY -->
+  
+  <!-- MARQUEE CỐ ĐỊNH Ở CUỐI -->
+  <div class="marquee-container marquee-bottom">
+    <div class="marquee">Vì nước quên thân vì dân quên mình</div>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
